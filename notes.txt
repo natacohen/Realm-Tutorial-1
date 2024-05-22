@@ -1,0 +1,9 @@
+{"_id":{"$oid":"6632566d8a7bf92cf62e3c51"},
+"task_name": "homework",
+"task_time": "30 minutes",
+"day_of_week": ["Monday","Tuesday","Wednesday","Thursday"]
+
+
+}
+
+
