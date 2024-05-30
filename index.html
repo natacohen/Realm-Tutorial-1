@@ -9,12 +9,12 @@
 </head>
 
 <body>
-    <h1>My Movies</h1>
+    <h1>My Tasks</h1>
     <div>
         <!-- Login anonymously -->
         <input type="submit" value="LOGIN" onClick="login()">
         <!-- Finds first 20 movies in movies collection -->
-        <input type="submit" value="FIND 20 MOVIES" onClick="find_movies()">
+        <input type="submit" value="FIND Tasks" onClick="find_movies()">
     </div>
     <!-- Using this div to display the user ID -->
     <div id="user"></div>
@@ -22,11 +22,11 @@
     <div id="movies"></div>
     <div>
         <label for="task-name">Task Name:</label><br>
-        <input type="text" id="movie-title" name="movie-title"><br>
-        <label for="task-type"> Time:</label><br>
+        <input type="text" id="task-name" name="task-name"><br>
+        <label for="task-time"> Time:</label><br>
         <input type="text" id="task-time" name="task-time"><br>
         
-        <input type="submit" value="ADD" onClick="add_Movie()">
+        <input type="submit" value="ADD" onClick="add_Task()">
 
 
     </div>

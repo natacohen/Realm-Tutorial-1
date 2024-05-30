@@ -27,12 +27,12 @@ const find_movies = async () => {
     }
 
     // Retrieve 20 movie titles (only the titles thanks to the projection).
-    const movies_titles = await collMovies.find({}, {
+    const movie_titles = await collMovies.find({}, {
         "projection": {
             "_id": 0,
             "task_name": 1,
-            "task_time": 1,
-            "day_of_week": 1
+            "task_time": 1
+            
 
         },
         "limit": 10
@@ -43,42 +43,39 @@ const find_movies = async () => {
     movies_div.empty();
 
     // Loop through the 20 movie title and display them in the movies div.
-    for (const movie of movies_titles) {
+    for (const movie of movie_titles) {
         let p = document.createElement("p");
         p.append(movie.task_name);
         p.append(movie.task_time);
-        let img = document.createElement("img");
-        img.setAttribute("src", movie.poster);
-        movies_div.append(img);
+    
         movies_div.append(p);
     }
 };
 
 
 // add movies
-const add_Movie = async () => {
+const add_Task = async () => {
 
     let collMovies;
     try {
         // Access the movies collection through MDB Realm & the readonly rule.
         const mongodb = app.currentUser.mongoClient(ATLAS_SERVICE);
-        collMovies = mongodb.db("sample_mflix").collection("movies");
+        collMovies = mongodb.db("tasks_base").collection("tasks");
     } catch (err) {
         $("#user").append("Need to login first.");
         console.error("Need to log in first", err);
         return;
     }
-    const movies_titles = await collMovies.insertOne({
+    const task_name = await collMovies.insertOne({
 
 
-        plot: `${document.getElementById("movie-plot").value}`,
-        title: `${document.getElementById("movie-title").value}`,
-        year: `${document.getElementById("movie-year").value}`,
-        type: "movie"
+        task_name: `${document.getElementById("task-name").value}`,
+        task_time: `${document.getElementById("task-time").value}`
+       
 
 
     });
-    console.log(movies_titles);
+    console.log(task_name);
 
 
 }
